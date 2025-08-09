@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Destinations{% endblock %}
+{% block content %}
+<h1 class="mb-4">Discover Destinations</h1>
+<div class="row">
+  {% for dest in destinations %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <img src="{{ dest.img.url }}" class="card-img-top" alt="{{ dest.name }}">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ dest.name }}</h5>
+        <p class="card-text">{{ dest.country }} - ${{ dest.price }}</p>
+        <a href="{% url 'destination' dest.id %}" class="btn btn-primary mt-auto">View</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No destinations available.</p>
+  {% endfor %}
+</div>
+{% endblock %}
