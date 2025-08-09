@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
-from travello.models import Destination
+from .models import Destination
 
 def index(request):
     dests = Destination.objects.all()
