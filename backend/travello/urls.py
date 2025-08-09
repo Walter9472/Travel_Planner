@@ -1,5 +1,6 @@
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('',include('travello.urls'))
+    path('', views.index, name='index'),
 ]
