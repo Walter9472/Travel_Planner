@@ -3,7 +3,7 @@
   <component name="de.achimonline.quickjinja.settings.QuickJinjaProjectSettingsState">
     <option name="settings">
       <QuickJinjaProjectSettings>
-        <option name="templateFilePath" value="$PROJECT_DIR$/backend/travello/views.py" />
+        <option name="templateFilePath" value="$PROJECT_DIR$/frontend/templates/login.html" />
       </QuickJinjaProjectSettings>
     </option>
   </component>
