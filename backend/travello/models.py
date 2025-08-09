@@ -12,7 +12,7 @@ class Trip(models.Model):
 #Modell Destination (Name, Land, Kosten, Beschreibung).
 class Destination(models.Model):
     name = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='destpics')
+    img = models.ImageField(upload_to='dest/pics')
     country = models.CharField(max_length=100)
     # z.B. max. 6 Stellen insgesamt, 2 davon nach dem Komma: 9999.99
     price = models.DecimalField(max_digits=6,decimal_places=2)
@@ -21,9 +21,9 @@ class Destination(models.Model):
 #Modell Activity (z.B. Museen, Restaurants) mit ForeignKey zu Trip oder Destination.
 class Activity(models.Model):
     name = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='actpics')
+    img = models.ImageField(upload_to='act/pics')
     desc = models.TextField()
-    fk_id = models.ForeignKey()
+    destination = models.ForeignKey(Destination,on_delete=models.CASCADE,related_name='activities')
 
 
 
