@@ -6,5 +6,6 @@ urlpatterns = [
     path('destination/<int:dest_id>/', views.destination, name='destination'),
     path('trip/<int:trip_id>/', views.trip_detail, name='trip_detail'),
     path('activity/<int:activity_id>/', views.activity_detail, name='activity_detail'),
+    path('api/route/', views.route, name='api_route'),
 
 ]
