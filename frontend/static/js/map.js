@@ -7,13 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const map = L.map('map').setView([data.start.lat, data.start.lng], 13);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: '© OpenStreetMap contributors © Mapbox',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'your.mapbox.access.token'
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
     const points = [[data.start.lat, data.start.lng]];
