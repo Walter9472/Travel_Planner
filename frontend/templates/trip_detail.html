@@ -5,7 +5,15 @@
 <h1>{{ trip.title }}</h1>
 <p class="text-muted">{{ trip.start_date }} – {{ trip.end_date }}</p>
 <p>{{ trip.desc }}</p>
-<div id="map" style="height: 400px;"></div>
+<div id="map-container">
+    <div id="map" style="height: 400px;"></div>
+    <div id="route-info">
+        <p>Start: <span id="start-point"></span></p>
+        <p>End: <span id="end-point"></span></p>
+        <ul id="waypoints"></ul>
+    </div>
+</div>
 <p><a href="{% url 'destination' trip.destination.id %}">Back to {{ trip.destination.name }}</a></p>
+<script id="route-data" type="application/json">{{ route_data|safe }}</script>
 <script src="{% static 'js/map.js' %}"></script>
 {% endblock %}
