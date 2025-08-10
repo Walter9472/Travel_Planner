@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ trip.title }}{% endblock %}
 {% block content %}
 <h1>{{ trip.title }}</h1>
 <p class="text-muted">{{ trip.start_date }} – {{ trip.end_date }}</p>
 <p>{{ trip.desc }}</p>
+<div id="map" style="height: 400px;"></div>
 <p><a href="{% url 'destination' trip.destination.id %}">Back to {{ trip.destination.name }}</a></p>
+<script src="{% static 'js/map.js' %}"></script>
 {% endblock %}
