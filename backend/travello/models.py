@@ -1,4 +1,5 @@
 from django.db import models
+from .geocoding import geocode_location
 
 # Create your models here.
 
@@ -11,6 +12,15 @@ class Destination(models.Model):
     # z.B. max. 6 Stellen insgesamt, 2 davon nach dem Komma: 9999.99
     price = models.DecimalField(max_digits=6, decimal_places=2)
     desc = models.TextField()
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        lat, lon = geocode_location(self.name, self.country)
+        if lat is not None and lon is not None:
+            self.latitude = lat
+            self.longitude = lon
+        super().save(*args, **kwargs)
 
 
 #Modell Trip mit Feldern wie Titel, Startdatum, Enddatum, Beschreibung.
@@ -28,6 +38,8 @@ class Activity(models.Model):
     img = models.ImageField(upload_to='act/pics')
     desc = models.TextField()
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE, related_name='activities')
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
 
 
