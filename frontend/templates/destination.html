@@ -8,6 +8,7 @@
   <p><strong>Country:</strong> {{ dest.country }} | <strong>Price:</strong> ${{ dest.price }}</p>
 </div>
 
+{# List trips associated with this destination #}
 <h2 class="mt-5">Trips</h2>
 <div class="row mb-4">
   {% for trip in trips %}
@@ -25,6 +26,7 @@
   {% endfor %}
 </div>
 
+{# List activities for this destination #}
 <h2>Activities</h2>
 <div class="row">
   {% for activity in activities %}

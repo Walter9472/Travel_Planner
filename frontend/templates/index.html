@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Destinations{% endblock %}
 {% block content %}
+{# List of all available destinations #}
 <h1 class="mb-4">Discover Destinations</h1>
 <div class="row">
   {% for dest in destinations %}
@@ -10,6 +11,7 @@
       <div class="card-body d-flex flex-column">
         <h5 class="card-title">{{ dest.name }}</h5>
         <p class="card-text">{{ dest.country }} - ${{ dest.price }}</p>
+        {# Link to destination detail page #}
         <a href="{% url 'destination' dest.id %}" class="btn btn-primary mt-auto">View</a>
       </div>
     </div>
