@@ -9,12 +9,14 @@ from .models import Destination, Trip, Activity
 
 
 def index(request):
+    """Display all available destinations on the landing page."""
     destinations = Destination.objects.all()
     return render(request, "index.html", {"destinations": destinations})
 
 
 @login_required(login_url="login")
 def destination(request, dest_id):
+    """Show details for a single destination including trips and activities."""
     dest = get_object_or_404(Destination, pk=dest_id)
     trips = dest.trips.all()
     activities = dest.activities.all()
@@ -24,6 +26,7 @@ def destination(request, dest_id):
 
 @login_required(login_url="login")
 def trip_detail(request, trip_id):
+    """Render a trip with a map visualising activities as waypoints."""
     trip = get_object_or_404(Trip, pk=trip_id)
     activities = trip.destination.activities.all()
     route_data = {
@@ -40,12 +43,14 @@ def trip_detail(request, trip_id):
 
 @login_required(login_url="login")
 def activity_detail(request, activity_id):
+    """Display details for a single activity."""
     activity = get_object_or_404(Activity, pk=activity_id)
     return render(request, "activity_detail.html", {"activity": activity})
 
 
 @require_GET
 def route(request):
+    """Return a route between points using the public OSRM API."""
     start = request.GET.get("start")
     end = request.GET.get("end")
     waypoints = request.GET.get("waypoints")

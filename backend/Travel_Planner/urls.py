@@ -19,10 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+# Delegate URL patterns to individual apps
 urlpatterns = [
-    path('', include('travello.urls')),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-
+    path('', include('travello.urls')),  # main app URLs
+    path('admin/', admin.site.urls),  # Django admin interface
+    path('accounts/', include('accounts.urls')),  # authentication URLs
 ]
-urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+
+# Serve uploaded media files during development
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,5 +4,6 @@
 <h1>{{ activity.name }}</h1>
 <img src="{{ activity.img.url }}" class="img-fluid mb-3" alt="{{ activity.name }}">
 <p>{{ activity.desc }}</p>
+{# Link back to the destination page #}
 <p><a href="{% url 'destination' activity.destination.id %}">Back to {{ activity.destination.name }}</a></p>
 {% endblock %}
